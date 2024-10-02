@@ -1,5 +1,6 @@
 #pragma once
 
+#include "CollisionObject.h"
 #include "Body.h"
 
 #include <vector>
@@ -16,26 +17,18 @@ struct Size {
     unsigned int heght = 10;
 };
 
-class SnakeData
+class SnakeData : CollisionObject
 {
 public:
     SnakeData();
 
-    const Point &position() {
-        return mPosition;
-    }
-    const Direction direction() {
-        return mDirection;
-    }
-    const Size &size() {
-        return mSize;
-    }
-    unsigned int length() {
-        return static_cast<unsigned int>(mBody.size());
-    }
+    void setDirection(Direction direction);
+    const Direction direction() const;
+    const Size &size() const;
+    unsigned int length() const;
+    const std::vector<Body> &body() const;
 
 private:
-    Point mPosition {50, 50};
     Direction mDirection {Direction::Right};
     Size mSize {10, 10};
     std::vector<Body> mBody {0};

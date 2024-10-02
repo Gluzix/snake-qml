@@ -1,5 +1,7 @@
 #pragma once
 
+#include "GameplayManager.h"
+
 #include <QObject>
 
 class GameManager : public QObject
@@ -11,4 +13,6 @@ public:
 private:
     void loadQml();
     void registerQmlTypes();
+
+    GameplayManager mGameplayManager;
 };

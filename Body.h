@@ -1,26 +1,6 @@
 #pragma once
 
-struct Point {
-    Point(int x, int y)
-        : x(x)
-        , y(y)
-    {}
-    Point (const Point &pt)
-    {
-        x = pt.x;
-        y = pt.y;
-    }
-    void operator=(const Point &pt) {
-        x = pt.x;
-        y = pt.y;
-    }
-    bool operator==(const Point &pt) {
-        return x == pt.x && y == pt.y;
-    }
-
-    int x{-1};
-    int y{-1};
-};
+#include "Point.h"
 
 class Body {
 
@@ -48,15 +28,15 @@ public:
         mPosition = position;
     }
 
-    const Point &position() {
+    const Point &position() const {
         return mPosition;
     }
 
-    const Point &oneBeforePosition() {
+    const Point &oneBeforePosition() const {
         return mOneBeforePosition;
     }
 
-    const Point &oneAfterPosition() {
+    const Point &oneAfterPosition() const {
         return mOneAfterPosition;
     }
 
