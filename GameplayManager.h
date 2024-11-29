@@ -15,5 +15,6 @@ public slots:
 
 private:
     bool checkCollision() const;
+    std::vector<CollisionObject> mObjects;
     SnakeData mSnake;
 };

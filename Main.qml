@@ -1,8 +1,13 @@
 import QtQuick
 
 Window {
-    width: 640
-    height: 480
+    width: 1280
+    height: 760
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Snake")
+
+    GameArea {
+        anchors.fill: parent
+        focus:true
+    }
 }

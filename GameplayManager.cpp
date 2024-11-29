@@ -11,11 +11,8 @@ void GameplayManager::onDirectionChanged(Direction direction)
 
 bool GameplayManager::checkCollision() const
 {
-    for (const auto &bodyPart: mSnake.body()) {
-        if (mSnake.position() == bodyPart.position()) {
-            return true;
-        }
+    if (mSnake.collidedWithOwnBody()) {
+        return true;
     }
-
     return false;
 }

@@ -3,6 +3,7 @@
 #include "GameplayManager.h"
 
 #include <QObject>
+#include <QQmlApplicationEngine>
 
 class GameManager : public QObject
 {
@@ -15,4 +16,5 @@ private:
     void registerQmlTypes();
 
     GameplayManager mGameplayManager;
+    QQmlApplicationEngine mEngine;
 };

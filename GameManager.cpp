@@ -1,7 +1,6 @@
 #include "GameManager.h"
 
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
 
 GameManager::GameManager(QObject *parent)
     : QObject{parent}
@@ -12,15 +11,14 @@ GameManager::GameManager(QObject *parent)
 
 void GameManager::loadQml()
 {
-    QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/snake/Main.qml"_qs);
     QObject::connect(
-        &engine,
+        &mEngine,
         &QQmlApplicationEngine::objectCreationFailed,
         QGuiApplication::instance(),
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    engine.load(url);
+    mEngine.load(url);
 }
 
 void GameManager::registerQmlTypes()
