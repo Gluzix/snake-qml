@@ -4,6 +4,11 @@ GameplayManager::GameplayManager(QObject *parent)
     : QObject{parent}
 {}
 
+SnakeData &GameplayManager::snakeData()
+{
+    return mSnake;
+}
+
 void GameplayManager::onDirectionChanged(Direction direction)
 {
     mSnake.setDirection(direction);

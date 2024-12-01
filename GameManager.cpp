@@ -7,6 +7,23 @@ GameManager::GameManager(QObject *parent)
 {
     registerQmlTypes();
     loadQml();
+
+    connect(&mTimer, &QTimer::timeout, this, &GameManager::updateGameplay);
+    mTimer.start(timerTimeout);
+}
+
+void GameManager::start()
+{
+    if (!mTimer.isActive()) {
+        mTimer.start(timerTimeout);
+    }
+}
+
+void GameManager::pause()
+{
+    if (mTimer.isActive()) {
+        mTimer.stop();
+    }
 }
 
 void GameManager::loadQml()
@@ -22,6 +39,12 @@ void GameManager::loadQml()
 }
 
 void GameManager::registerQmlTypes()
+{
+    qmlRegisterSingletonInstance("SnakeEngine", 1, 0, "GameplayManager", &mGameplayManager);
+    qmlRegisterSingletonInstance("SnakeEngine", 1, 0, "KeyInputEventFilter", &mInputEventFilter);
+}
+
+void GameManager::updateGameplay()
 {
 
 }

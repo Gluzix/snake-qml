@@ -17,11 +17,13 @@ qt_add_qml_module(appsnake
     VERSION 1.0
     QML_FILES Main.qml GameArea.qml Snake.qml
     SOURCES GameManager.h GameManager.cpp
-    SOURCES SnakeData.h SnakeData.cpp
-    SOURCES Body.h Body.cpp
-    SOURCES GameplayManager.h GameplayManager.cpp
-    SOURCES CollisionObject.h CollisionObject.cpp
-    SOURCES Point.h Point.cpp
+    SnakeData.h SnakeData.cpp
+    Body.h Body.cpp
+    GameplayManager.h GameplayManager.cpp
+    CollisionObject.h CollisionObject.cpp
+    Point.h Point.cpp
+    KeyInputEventFilter.h KeyInputEventFilter.cpp
+    SOURCES IMovableObject.h
 )
 
 set_target_properties(appsnake PROPERTIES

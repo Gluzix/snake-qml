@@ -1,6 +1,7 @@
 #pragma once
 
 struct Point {
+    Point();
     Point(int x, int y);
     Point (const Point &pt);
     void operator=(const Point &pt);

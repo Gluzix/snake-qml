@@ -2,6 +2,8 @@
 
 #include "Point.h"
 #include "CollisionObject.h"
+#include "IMovableObject.h"
+
 #include <vector>
 
 enum class Direction {
@@ -16,7 +18,7 @@ struct Size {
     unsigned int heght = 10;
 };
 
-class SnakeData : public CollisionObject
+class SnakeData : public CollisionObject, public IMovableObject
 {
 public:
     SnakeData();
@@ -26,9 +28,12 @@ public:
     const Size &size() const;
     unsigned int length() const;
     const std::vector<Point> &body() const;
+    void update() override;
 
 private:
+    void moveSnakeBody();
+
     Direction mDirection {Direction::Right};
-    Size mSize {10, 10};
+    Size mSize;
     std::vector<Point> mBody {};
 };

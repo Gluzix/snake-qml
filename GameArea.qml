@@ -1,8 +1,10 @@
 import QtQuick
+import QtQml
 
 Item {
     anchors.fill: parent
     focus:true
+    property int direction: 1 //right
 
     Rectangle {
         border.color: "blue"
@@ -11,26 +13,7 @@ Item {
         height:parent.height
     }
 
-    Keys.onPressed: (event) =>
-    {
-        switch(event.key){
-            case Qt.Key_Down:
-                console.log("arrow down");
-            break;
-            case Qt.Key_Up:
-                console.log("arrow up");
-            break;
-            case Qt.Key_Left:
-                console.log("arrow left");
-            break;
-            case Qt.Key_Right:
-                console.log("arrow right");
-            break;
-            default: break;
-        }
-    }
-
     Snake {
-
+        id: snake
     }
 }

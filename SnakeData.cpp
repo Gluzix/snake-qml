@@ -1,6 +1,9 @@
 #include "SnakeData.h"
 
-SnakeData::SnakeData() {}
+SnakeData::SnakeData()
+{
+
+}
 
 bool SnakeData::collidedWithOwnBody() const
 {
@@ -31,4 +34,33 @@ unsigned int SnakeData::length() const {
 
 const std::vector<Point> &SnakeData::body() const {
     return mBody;
+}
+
+void SnakeData::update()
+{
+    moveSnakeBody();
+}
+
+void SnakeData::moveSnakeBody()
+{
+    auto updateRestOfTheBody = [this](const Point &point, auto iterator) {
+        Point previousPt = point;
+        for (auto it = iterator; it != mBody.end(); ++it) {
+            *iterator = previousPt;
+            previousPt = *iterator;
+        }
+    };
+
+    auto posIterator = mBody.begin();
+    Point point = *posIterator;
+
+    switch (mDirection) {
+        case Direction::Top: posIterator->y--; break;
+        case Direction::Bottom: posIterator->y++; break;
+        case Direction::Left: posIterator->x--; break;
+        case Direction::Right: posIterator->x++; break;
+    }
+
+    posIterator++;
+    updateRestOfTheBody(point, posIterator);
 }
